@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
-const router = require('./routes/index');
+const {publicRouter, privateRouter} = require('./routes/index');
 const app = express();
 require('dotenv').config()
 const PORT = process.env.PORT || 7000;
@@ -16,7 +16,8 @@ const url = `mongodb+srv://${process.env.DB_NAME}:${process.env.DB_PASS}@cluster
 mongoose.connect(url)
     .then(res =>{
     
-        app.use('/public', router)  
+        app.use('/public', publicRouter)
+        app.use('/private', privateRouter)
         
 
     }).catch(err => {

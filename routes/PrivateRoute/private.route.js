@@ -1,5 +1,5 @@
 const express = require('express');
-const { optionGetController, optionPostController } = require('../controllers/options.controller');
+const { optionGetController, optionPostController } = require('../../controllers/options.controller');
 const router = express.Router();
 
 router.get('/option', optionGetController)
